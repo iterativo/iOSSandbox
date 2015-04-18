@@ -10,4 +10,6 @@
 
 @interface RestService : NSObject
 
+-(void) Get:(NSString*)url;
+
 @end

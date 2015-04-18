@@ -14,8 +14,8 @@
 		53E5D79B1AE1FACE000C6BF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53E5D7991AE1FACE000C6BF6 /* Main.storyboard */; };
 		53E5D79D1AE1FACE000C6BF6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E5D79C1AE1FACE000C6BF6 /* Images.xcassets */; };
 		53E5D7A01AE1FACE000C6BF6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E5D79E1AE1FACE000C6BF6 /* LaunchScreen.xib */; };
-		53E5D7AC1AE1FACE000C6BF6 /* iosSandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E5D7AB1AE1FACE000C6BF6 /* iosSandboxTests.m */; };
 		53E5D7B71AE20424000C6BF6 /* RestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E5D7B61AE20424000C6BF6 /* RestService.m */; };
+		53E5D7B91AE3124B000C6BF6 /* RestServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E5D7B81AE3124B000C6BF6 /* RestServiceTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +42,9 @@
 		53E5D79F1AE1FACE000C6BF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		53E5D7A51AE1FACE000C6BF6 /* iosSandboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosSandboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E5D7AA1AE1FACE000C6BF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53E5D7AB1AE1FACE000C6BF6 /* iosSandboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iosSandboxTests.m; sourceTree = "<group>"; };
 		53E5D7B51AE20424000C6BF6 /* RestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestService.h; sourceTree = "<group>"; };
 		53E5D7B61AE20424000C6BF6 /* RestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestService.m; sourceTree = "<group>"; };
+		53E5D7B81AE3124B000C6BF6 /* RestServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestServiceTests.m; sourceTree = "<group>"; };
 		9377964C2522BDCCB994AC0E /* libPods-iosSandboxTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosSandboxTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5538B0058ABBBE55BB68CB /* Pods-iosSandboxTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosSandboxTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosSandboxTests/Pods-iosSandboxTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,8 +117,8 @@
 		53E5D7A81AE1FACE000C6BF6 /* iosSandboxTests */ = {
 			isa = PBXGroup;
 			children = (
-				53E5D7AB1AE1FACE000C6BF6 /* iosSandboxTests.m */,
 				53E5D7A91AE1FACE000C6BF6 /* Supporting Files */,
+				53E5D7B81AE3124B000C6BF6 /* RestServiceTests.m */,
 			);
 			path = iosSandboxTests;
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E5D7AC1AE1FACE000C6BF6 /* iosSandboxTests.m in Sources */,
+				53E5D7B91AE3124B000C6BF6 /* RestServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
