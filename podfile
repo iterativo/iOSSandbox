@@ -1,0 +1,3 @@
+target 'iosSandboxTests', :exclusive => true do
+	pod 'OCMock'
+end
