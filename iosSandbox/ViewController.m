@@ -18,7 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     RestService *svc = [[RestService alloc]init];
-    [svc Get:@"https://itunes.apple.com/search?term=apple&media=software"];
+    [svc get:@"https://itunes.apple.com/search?term=apple&media=software"
+   onSuccess:^(NSDictionary *json) {
+       NSLog(@"%@", json);
+   }
+     onError:^(NSString *errorMssg) {
+         NSLog(@"%@", errorMssg);
+     }];
 }
 
 - (void)didReceiveMemoryWarning {

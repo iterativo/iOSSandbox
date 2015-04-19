@@ -10,6 +10,8 @@
 
 @interface RestService : NSObject
 
--(void) Get:(NSString*)url;
+-(void)get:(NSString *)url onSuccess:(void (^)(NSDictionary *json))successHandler onError:(void (^)(NSString *errorMssg))errorHandler;
+
+-(void)get:(NSString *)url withQuery:(NSDictionary *)query onSuccess:(void (^)(NSDictionary *json))successHandler onError:(void (^)(NSString *errorMssg))errorHandler;
 
 @end

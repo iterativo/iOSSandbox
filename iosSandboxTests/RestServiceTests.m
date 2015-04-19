@@ -27,19 +27,44 @@
     [super tearDown];
 }
 
-- (void)testGet {
+- (void)testGetShouldHandleRequestError {
     id __weak sessionMock = OCMClassMock([NSURLSession class]);
-    NSString *url = @"foo.com";
-    __block BOOL called = NO;
+    id dataTaskMock = OCMClassMock([NSURLSessionDataTask class]);
     
-    OCMStub([sessionMock dataTaskWithURL:[NSURL URLWithString:url] completionHandler:OCMOCK_ANY]).andDo(^(NSInvocation *invocation){
-        called = YES;
-    });
+    NSString *url = @"foo.com";
+    
+    OCMStub([sessionMock dataTaskWithURL:[NSURL URLWithString:url]
+                       completionHandler:OCMOCK_ANY])
+        .andCall(self, @selector(dataTaskWithURL:completionHandlerWithRequestError:))
+        .andReturn(dataTaskMock);
     OCMStub([sessionMock sharedSession]).andReturn(sessionMock);
     
     RestService *svc = [[RestService alloc]init];
-    [svc Get:url];
-    XCTAssertTrue(called);
+    [svc get:url onSuccess:^(NSDictionary *json) {
+        XCTFail(@"Expected errorHandler");
+    } onError:^(NSString *errorMssg) {
+        XCTAssertEqualObjects(@"foo", errorMssg);
+    }];
+    
+    OCMVerify([dataTaskMock resume]);
 }
+
+- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandlerWithRequestError:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler{
+    NSError *error = OCMClassMock([NSError class]);
+    OCMStub([error localizedDescription]).andReturn(@"foo");
+    completionHandler(nil, nil, error);
+    return nil;
+}
+
+//- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandlerWithJsonSerializationError:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler{
+//    id __weak serializerMock = OCMClassMock([NSJSONSerialization class]);
+//    OCMStub([serializerMock]);
+//    
+//    NSError *error = OCMClassMock([NSError class]);
+//    
+//    OCMStub([error localizedDescription]).andReturn(@"foo");
+//    completionHandler(nil, nil, error);
+//    return nil;
+//}
 
 @end
