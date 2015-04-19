@@ -19,11 +19,11 @@
     [super viewDidLoad];
     RestService *svc = [[RestService alloc]init];
     [svc get:@"https://itunes.apple.com/search?term=apple&media=software"
-   onSuccess:^(NSDictionary *json) {
-       NSLog(@"%@", json);
+   onSuccess:^(NSDictionary *dict) {
+       NSLog(@"%@", dict);
    }
-     onError:^(NSString *errorMssg) {
-         NSLog(@"%@", errorMssg);
+     onError:^(NSError *error) {
+         NSLog(@"%@", error.localizedDescription);
      }];
 }
 

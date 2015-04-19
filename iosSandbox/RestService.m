@@ -10,19 +10,19 @@
 
 @implementation RestService
 
--(void)get:(NSString *)url onSuccess:(void (^)(NSDictionary *json))successHandler onError:(void (^)(NSString *errorMssg))errorHandler{
+-(void)get:(NSString *)url onSuccess:(void (^)(NSDictionary *dict))successHandler onError:(void (^)(NSError *error))errorHandler{
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:url] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         if(error != nil){
-            errorHandler(error.localizedDescription);
+            errorHandler(error);
         } else {
             NSError *jsonError;
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            NSDictionary *jsonAsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
             if (jsonError != nil){
-                errorHandler(jsonError.localizedDescription);
+                errorHandler(jsonError);
             } else {
-                successHandler(json);
+                successHandler(jsonAsDict);
             }
         }
         
@@ -30,7 +30,7 @@
     [dataTask resume];
 }
 
--(void)get:(NSString *)url withQuery:(NSDictionary *)query onSuccess:(void (^)(NSDictionary *json))successHandler onError:(void (^)(NSString *errorMssg))errorHandler{
+-(void)get:(NSString *)url withQuery:(NSDictionary *)query onSuccess:(void (^)(NSDictionary *json))successHandler onError:(void (^)(NSError *error))errorHandler{
     
 }
 
